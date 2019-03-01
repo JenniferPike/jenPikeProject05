@@ -5,15 +5,17 @@ import HaveSeen from './components/HaveSeen';
 import MustSee from './components/MustSee';
 import Footer from './components/Footer';
 import './App.css';
-// src / components / Footer.js
+
 
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
+
       userInput: ""
     }
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
   handleChange = (event) =>{
     this.setState({
@@ -24,10 +26,18 @@ class App extends Component {
 
   handleSubmit(e){
     e.preventDefault();
-    const dbRef = firebase.database.ref();
-    dbRef.push(this.state.userInput);
+    const dbRef = firebase.database().ref('/haveSeen');
+    
+    const seenItButton = document.getElementById('seenIt').checked;
+    
+    if( seenItButton === true){
+      dbRef.push(this.state.userInput);
+    }
+
     this.setState({userInput:""})
   }
+  //in handle submit - capture value of which checkbox selected
+  // set a condition that says if value of checkbox = have seen or must see and push to correct array
   
   render() {
     return (

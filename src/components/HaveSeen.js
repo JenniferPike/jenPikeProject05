@@ -16,9 +16,14 @@ class HaveSeen extends Component{
           const data=response.val();
           // select the haveseen movies from the data
           const haveSeen = data.haveSeen;
+          const haveSeenArray = [];
+          for(let movie in haveSeen){
+              haveSeenArray.push(haveSeen[movie]);
+          }
+        //   console.log(haveSeenArray);
           // change the state to show the new data
           this.setState({
-              haveSeenMovies:haveSeen
+              haveSeenMovies:haveSeenArray
           })
         })
 
@@ -29,9 +34,12 @@ class HaveSeen extends Component{
             <div className="haveSeen">
                 <h1>Have Seen's</h1>
                 <ul>
-                    {this.state.haveSeenMovies.map((movie, i)=>{
+
+                    { this.state.haveSeenMovies.length !== 0 ? 
+                        this.state.haveSeenMovies.map((movie, i)=>{
                         return <li key={i}>{movie}</li>
-                    })}
+                        
+                    }):null}
                 </ul>
             </div>
         )
