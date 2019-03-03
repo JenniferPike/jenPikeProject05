@@ -12,7 +12,6 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-
       userInput: ""
     }
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -20,39 +19,43 @@ class App extends Component {
   handleChange = (event) =>{
     this.setState({
       userInput:event.target.value
-
     })
   }
 
   handleSubmit(e){
     e.preventDefault();
-    const dbRef = firebase.database().ref('/haveSeen');
+    const dbRefHaveSeen = firebase.database().ref('/haveSeen');
+    const dbRefMustSee = firebase.database().ref('/mustSee')
     
     const seenItButton = document.getElementById('seenIt').checked;
+    const mustSeeButton = document.getElementById('mustSee').checked;
     
+   //capture value of which checkbox selected
+        //set a condition that says if value of checkbox = have seen or must see then push to correct array
     if( seenItButton === true){
-      dbRef.push(this.state.userInput);
+      dbRefHaveSeen.push(this.state.userInput);
+    }else if(mustSeeButton === true){
+      dbRefMustSee.push(this.state.userInput);
     }
 
     this.setState({userInput:""})
   }
-  //in handle submit - capture value of which checkbox selected
-  // set a condition that says if value of checkbox = have seen or must see and push to correct array
+ 
   
   render() {
     return (
-      <div className="App">
+      <div className="App wrapper">
         <Header />
         <HaveSeen />
         <MustSee />
         
         <form action="submit" onSubmit={this.handleSubmit} >
-          {/* TODO:add Checked */}
+  
           <label htmlFor="seenIt">Seen It</label>
-          <input type="checkbox" id="seenIt" name="watchStatus" value="haveSeenIt"/>
+          <input type="radio" id="seenIt" name="watchStatus" value="haveSeenIt"/>
           <label htmlFor="mustSee">Must See</label>
-          <input type="checkbox" id="mustSee" name="watchStatus" value="mustSee"/>
-          <input type="text" onChange={this.handleChange}placeholder="enter movie"/>
+          <input type="radio" id="mustSee" name="watchStatus" value="mustSee"/>
+          <input type="text" onChange={this.handleChange} placeholder="enter movie" value={this.state.userInput}/>
           <button type="submit">Add Movie</button>
         </form>
         <Footer />

@@ -9,6 +9,11 @@ class HaveSeen extends Component{
            haveSeenMovies: []
         }
     }
+    removeMovie(movieId){
+        const dbRefRemove = firebase.database().ref(`haveSeen/${movieId}`);
+        dbRefRemove.remove();
+        
+    }
     componentDidMount() {
         const dbRef = firebase.database().ref()
         dbRef.on('value', response =>{
@@ -18,9 +23,11 @@ class HaveSeen extends Component{
           const haveSeen = data.haveSeen;
           const haveSeenArray = [];
           for(let movie in haveSeen){
-              haveSeenArray.push(haveSeen[movie]);
+              haveSeenArray.push({
+                  movie:haveSeen[movie],
+                  key:movie
+                });
           }
-        //   console.log(haveSeenArray);
           // change the state to show the new data
           this.setState({
               haveSeenMovies:haveSeenArray
@@ -32,13 +39,18 @@ class HaveSeen extends Component{
     render(){
         return(
             <div className="haveSeen">
-                <h1>Have Seen's</h1>
+                <h2>Have Seen's</h2>
                 <ul>
 
                     { this.state.haveSeenMovies.length !== 0 ? 
                         this.state.haveSeenMovies.map((movie, i)=>{
-                        return <li key={i}>{movie}</li>
-                        
+                        return(
+                            <li key={movie.key}>
+                            {movie.movie}
+                            <button onClick={()=>this.removeMovie(movie.key)}>X</button>
+                            </li>
+
+                        ) 
                     }):null}
                 </ul>
             </div>

@@ -9,6 +9,11 @@ class MustSee extends Component{
             mustSeeMovies: []
         }
     }
+    removeMovie(movieId){
+        const dbRefRemove = firebase.database().ref(`mustSee/${movieId}`);
+        dbRefRemove.remove();
+        
+    }
     componentDidMount() {
         const dbRef = firebase.database().ref()
         dbRef.on('value', (response) => {
@@ -16,9 +21,17 @@ class MustSee extends Component{
             const data = response.val();
             
             const mustSee = data.mustSee;
+            const mustSeeArray = [];
+
+            for(let movie in mustSee){
+                mustSeeArray.push({
+                    movie:mustSee[movie],
+                    key:movie
+                });
+            }
 
             this.setState({
-                mustSeeMovies:mustSee
+                mustSeeMovies:mustSeeArray
             })
         })
 
@@ -26,11 +39,17 @@ class MustSee extends Component{
     render(){
         return(
             <div className="mustSee">
-                <h1>Must See's</h1>
+                <h2>Must See's</h2>
                 <ul>
-                    {this.state.mustSeeMovies.map((movie, i) => {
-                    return <li key={i}>{movie}</li>
-                    })} 
+                    {this.state.mustSeeMovies.length !== 0 ? this.state.mustSeeMovies.map((movie, i) => {
+                    
+                    return (
+                        <li key={movie.key}>
+                        {movie.movie}
+                        <button onClick={()=>this.removeMovie(movie.key)}>X</button>
+                        </li>   
+                    )
+                    }):null} 
                 </ul>
             </div>
         )
