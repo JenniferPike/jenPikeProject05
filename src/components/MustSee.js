@@ -38,20 +38,23 @@ class MustSee extends Component{
     }
     render(){
         return(
-            <div className="mustSee">
-                <h2>Must See's</h2>
-                <ul className="haventSeen">
-                    {this.state.mustSeeMovies.length !== 0 ? this.state.mustSeeMovies.map((movie, i) => {
-                    
-                    return (
-                        <li key={movie.key}>
-                        {movie.movie}
-                        <button onClick={()=>this.removeMovie(movie.key)}>X</button>
-                        </li>   
-                    )
-                    }):null} 
-                </ul>
+            <div className="needToSee">
+                    <h2>Must See's</h2>
+                <div className="mustSee">
+                    <ul className="haventSeen">
+                        {this.state.mustSeeMovies.length !== 0 ? this.state.mustSeeMovies.map((movie, i) => {
+
+                            return (
+                                <li key={movie.key}>
+                                    {movie.movie}
+                                    <button onClick={() => this.removeMovie(movie.key)}>X</button>
+                                </li>
+                            )
+                        }) : null}
+                    </ul>
+                </div>
             </div>
+            
         )
     }
 }

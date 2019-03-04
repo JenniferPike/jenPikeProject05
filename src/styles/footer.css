@@ -2,3 +2,14 @@
 footer{
   text-align:center;
 }
+p{
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+}
+
+/* PHONES AND SMALLER */
+@media (min-width: 540px) {
+    p{
+      font-size: 1.2rem;
+    }
+}

@@ -40,8 +40,9 @@ class HaveSeen extends Component{
     render(){
 
         return(
-            <div className="haveSeen">
+            <div className="seenIt">
                 <h2>Have Seen's</h2>
+                <div className="haveSeen">
                 <ul className="seenItMovies">
                     { this.state.haveSeenMovies.length !== 0 ? 
                         this.state.haveSeenMovies.map((movie, i)=>{
@@ -54,6 +55,8 @@ class HaveSeen extends Component{
                         ) 
                     }):null}
                 </ul>
+
+                </div>
             </div>
         )
     }

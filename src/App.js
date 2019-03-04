@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import firebase from './firebase.js';
+import './App.css';
 import Header from './components/Header';
 import HaveSeen from './components/HaveSeen';
 import MustSee from './components/MustSee';
 import Footer from './components/Footer';
-import './App.css';
+
 
 
 
@@ -54,19 +55,22 @@ class App extends Component {
     return (
       <div className="App wrapper">
         <Header />
-        <HaveSeen />
-        <MustSee />
+        <div className="movieDiv">
+          <HaveSeen />
+          <MustSee />
+        </div>
         
         <form action="submit" onSubmit={this.handleSubmit} >
-  
-          <label htmlFor="seenItButtonIsChecked">Seen It</label>
-          <input type="radio" id="seenItButtonIsChecked" onChange={this.handleCheckboxChange} name="watchStatus" checked={this.state.buttonChecked === 'seenItButtonIsChecked'}/>
+          <div className="radioButtons">
+            <label htmlFor="seenItButtonIsChecked">Seen It</label>
+            <input type="radio" id="seenItButtonIsChecked" onChange={this.handleCheckboxChange} name="watchStatus" checked={this.state.buttonChecked === 'seenItButtonIsChecked'}/>
 
-          <label htmlFor="mustSeeButtonIsChecked">Must See</label>
-          <input type="radio" id="mustSeeButtonIsChecked" onChange={this.handleCheckboxChange} name="watchStatus" checked={this.state.buttonChecked === 'mustSeeButtonIsChecked'}/>
+            <label htmlFor="mustSeeButtonIsChecked">Must See</label>
+            <input type="radio" id="mustSeeButtonIsChecked" onChange={this.handleCheckboxChange} name="watchStatus" checked={this.state.buttonChecked === 'mustSeeButtonIsChecked'}/>
+          </div>
           
-          <input type="text" onChange={this.handleChange} placeholder="enter movie" value={this.state.userInput}/>
-          <button type="submit">Add Movie</button>
+          <input type="text" className="inputBox" onChange={this.handleChange} placeholder="enter movie" value={this.state.userInput}/>
+          <button type="submit" className="submitButton">Add Movie</button>
         </form>
         <Footer />
       </div>

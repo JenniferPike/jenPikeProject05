@@ -40,16 +40,84 @@ html{
 }
 ul{
   list-style: none;
+  padding:20px;
+}
+li{
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+  text-align: center;
 }
 .wrapper{
   width:80%;
   max-width:1024px;
   margin:0 auto;
 }
-/* form styles */
+
+
+/* FORM STYLES */
+label{
+  padding:20px 8px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight:bold;
+}
 form{
   text-align:center;
 }
 button{
   font-size:0.8rem;
+  margin:5px;
 }
+.inputBox{
+  font-family: 'Quicksand', sans-serif;
+  border:none;
+  border-radius:5px;
+  font-weight:bold;
+  padding: 10px 0;
+  text-align: center;
+  margin-top: 10px;
+}
+.submitButton{
+  font-family: 'Quicksand', sans-serif;
+  border:none;
+  border-radius:5px;
+  padding: 10px 25px;
+  font-weight:bold;
+  background: #BF3443;
+  color:white;
+  font-size:1.0rem;
+}
+#mustSeeButtonIsChecked, #seenItButtonIsChecked{
+  margin-right: 10px;
+}
+
+
+/* PHONES AND SMALLER */
+@media (min-width: 540px) {
+    li{
+      font-size:1.2rem;
+    }
+}
+
+/* IPAD STYLES FOR HEADER */
+@media (min-width: 768px) {
+    label{
+      font-size:1.1rem;
+    }
+}
+
+/* DESKTOP STYLES */
+@media(min-width:974px){
+  .movieDiv{
+    display:flex;
+    margin:50px 0;
+    justify-content: space-evenly;
+  } 
+};
+
+@media(min-width:1080px){
+  .movieDiv{
+    margin:30px 0;
+  } 
+};
+
+
