@@ -40,7 +40,7 @@ class MustSee extends Component{
         return(
             <div className="mustSee">
                 <h2>Must See's</h2>
-                <ul>
+                <ul className="haventSeen">
                     {this.state.mustSeeMovies.length !== 0 ? this.state.mustSeeMovies.map((movie, i) => {
                     
                     return (

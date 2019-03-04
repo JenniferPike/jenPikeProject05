@@ -33,6 +33,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 .clearfix:after {visibility: hidden; display: block; font-size: 0; content: ''; clear: both; height: 0; }
 
 * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
 /* general styles */
 html{
   font-size:125%;
@@ -45,26 +46,10 @@ ul{
   max-width:1024px;
   margin:0 auto;
 }
-/* header styles */
-h1{
-  font-size:1.8rem;
-  text-align:center;
-}
-h2{
-  font-size:1.1rem;
-  text-align:center;
-}
-header h2{
-  font-size:0.8rem;
-}
 /* form styles */
 form{
   text-align:center;
 }
 button{
   font-size:0.8rem;
-}
-/* footer styles */
-footer{
-  text-align:center;
 }

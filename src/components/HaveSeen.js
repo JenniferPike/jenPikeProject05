@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import firebase from '../firebase.js';
 import '../styles/haveSeen.css';
 
+
 class HaveSeen extends Component{
     constructor() {
         super();
@@ -37,11 +38,11 @@ class HaveSeen extends Component{
     }
 
     render(){
+
         return(
             <div className="haveSeen">
                 <h2>Have Seen's</h2>
-                <ul>
-
+                <ul className="seenItMovies">
                     { this.state.haveSeenMovies.length !== 0 ? 
                         this.state.haveSeenMovies.map((movie, i)=>{
                         return(

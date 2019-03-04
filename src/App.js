@@ -12,23 +12,31 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      userInput: ""
+      userInput: "",
+      buttonChecked: null,
     }
-    this.handleSubmit = this.handleSubmit.bind(this)
   }
-  handleChange = (event) =>{
+
+  handleChange = (event) => {
     this.setState({
       userInput:event.target.value
     })
   }
 
-  handleSubmit(e){
+
+  handleCheckboxChange = (e) => {
+    this.setState({
+      buttonChecked: e.target.id
+    })
+  }
+
+  handleSubmit = (e) => {
     e.preventDefault();
     const dbRefHaveSeen = firebase.database().ref('/haveSeen');
     const dbRefMustSee = firebase.database().ref('/mustSee')
     
-    const seenItButton = document.getElementById('seenIt').checked;
-    const mustSeeButton = document.getElementById('mustSee').checked;
+    const seenItButton = this.state.buttonChecked === 'seenItButtonIsChecked';
+    const mustSeeButton = this.state.buttonChecked === 'mustSeeButtonIsChecked';
     
    //capture value of which checkbox selected
         //set a condition that says if value of checkbox = have seen or must see then push to correct array
@@ -51,10 +59,12 @@ class App extends Component {
         
         <form action="submit" onSubmit={this.handleSubmit} >
   
-          <label htmlFor="seenIt">Seen It</label>
-          <input type="radio" id="seenIt" name="watchStatus" value="haveSeenIt"/>
-          <label htmlFor="mustSee">Must See</label>
-          <input type="radio" id="mustSee" name="watchStatus" value="mustSee"/>
+          <label htmlFor="seenItButtonIsChecked">Seen It</label>
+          <input type="radio" id="seenItButtonIsChecked" onChange={this.handleCheckboxChange} name="watchStatus" checked={this.state.buttonChecked === 'seenItButtonIsChecked'}/>
+
+          <label htmlFor="mustSeeButtonIsChecked">Must See</label>
+          <input type="radio" id="mustSeeButtonIsChecked" onChange={this.handleCheckboxChange} name="watchStatus" checked={this.state.buttonChecked === 'mustSeeButtonIsChecked'}/>
+          
           <input type="text" onChange={this.handleChange} placeholder="enter movie" value={this.state.userInput}/>
           <button type="submit">Add Movie</button>
         </form>
