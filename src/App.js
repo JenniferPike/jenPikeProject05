@@ -18,9 +18,9 @@ class App extends Component {
     }
   }
 
-  handleChange = (event) => {
+  handleChange = (e) => {
     this.setState({
-      userInput:event.target.value
+      userInput:e.target.value
     })
   }
 
@@ -49,6 +49,12 @@ class App extends Component {
 
     this.setState({userInput:""})
   }
+  
+  showError = (e)=>{
+    //stop user from submitting empty string
+    //odd characters allowed as some movies have them.
+    TODO:add errror handling in this Project currently allows empty string submissions
+  }
  
   
   render() {
@@ -69,7 +75,7 @@ class App extends Component {
             <input type="radio" id="mustSeeButtonIsChecked" onChange={this.handleCheckboxChange} name="watchStatus" checked={this.state.buttonChecked === 'mustSeeButtonIsChecked'}/>
           </div>
           
-          <input type="text" className="inputBox" onChange={this.handleChange} placeholder="enter movie" value={this.state.userInput}/>
+          <input type="text" className="inputBox" onChange={this.handleChange} placeholder="enter movie" value={this.state.userInput} required/>
           <button type="submit" className="submitButton">Add Movie</button>
         </form>
         <Footer />
