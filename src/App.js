@@ -53,7 +53,7 @@ class App extends Component {
   showError = (e)=>{
     //stop user from submitting empty string
     //odd characters allowed as some movies have them.
-    TODO:add errror handling in this Project currently allows empty string submissions
+    //TODO:add errror handling in this Project currently allows empty string submissions
   }
  
   
