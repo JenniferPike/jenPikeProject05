@@ -56,6 +56,10 @@ button{
 .submitButton:focus, .inputBox:focus, button:focus {
     background:#c7c7c7;
 }
+.submitButton:hover{
+  background: rgb(179, 79, 89); 
+}
+
 #mustSeeButtonIsChecked, #seenItButtonIsChecked{
   margin-right: 10px;
 }
@@ -79,7 +83,7 @@ button{
 @media(min-width:974px){
   .movieDiv{
     display:flex;
-    margin:50px 0;
+    margin:40px 0;
     justify-content: space-evenly;
   } 
 };

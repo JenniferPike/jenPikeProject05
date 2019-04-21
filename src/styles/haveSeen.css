@@ -3,8 +3,9 @@
    flex-direction: column;
 }
 .haveSeen{
-   background-color: rgba(255, 255, 255, 0.24);
-   min-height:250px;
+   background-color: rgba(84, 84, 84, 0.81);
+   height:300px;
+   overflow:auto;
 }
 
 /* PHONES AND SMALLER */

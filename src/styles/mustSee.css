@@ -3,9 +3,10 @@
     flex-direction: column;
 }
 .mustSee{
-    background-color: rgba(255, 255, 255, 0.24);
+    background-color: rgba(84, 84, 84, 0.81);
     margin-bottom:10px;
-    min-height:250px;
+    height:300px;
+    overflow: auto;
 }
 
 
